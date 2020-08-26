@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - shopper (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - shopper (from `.symlinks/plugins/shopper/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  shopper:
+    :path: ".symlinks/plugins/shopper/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  shopper: 269f7ef701251f213453424ec1996695dd0b9c44
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.9.3
