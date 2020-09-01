@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:shopper/services/store_service.dart';
+import 'package:shopper/shopper_config.dart';
 
-import 'package:flutter/services.dart';
-import 'package:shopper/shopper.dart';
+void main() async {
+  ShopperConfig.setConfig(
+    storeUrl: '',
+    storefrontApiVersion: '2020-04',
+    storefrontAccessToken: '',
+  );
 
-void main() {
+  StoreService store = StoreService.instance;
+  final products = await store.getProducts(limit: 10);
+
+  print(products[0].title);
   runApp(MyApp());
 }
 
@@ -14,34 +22,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await Shopper.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('Shopper'),
         ),
       ),
     );
