@@ -1,11 +1,17 @@
 PODS:
   - Flutter (1.0.0)
+  - Mobile-Buy-SDK (5.0.0)
   - shopper (0.0.1):
     - Flutter
+    - Mobile-Buy-SDK
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - shopper (from `.symlinks/plugins/shopper/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Mobile-Buy-SDK
 
 EXTERNAL SOURCES:
   Flutter:
@@ -15,8 +21,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  shopper: 269f7ef701251f213453424ec1996695dd0b9c44
+  Mobile-Buy-SDK: a2d5780eadac16e9980c2702789045b701bc5d55
+  shopper: d98679df411cc382b4bb8ef36d70abb7f6c529ea
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: ffd7293eb7d5907b54a367fd400872baeef513a5
 
 COCOAPODS: 1.9.3
