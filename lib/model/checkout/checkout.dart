@@ -1,7 +1,7 @@
 import 'package:shopper/model/products/price.dart';
 
 import 'applied_giftcards.dart';
-import 'line_items.dart';
+import 'line_item.dart';
 import 'shipping_rates.dart';
 
 class Checkout {
