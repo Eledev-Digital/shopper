@@ -1,6 +1,7 @@
-import 'package:shopper/model/orders/discounts.dart';
-import 'package:shopper/model/products/price.dart';
-import 'package:shopper/model/products/variant.dart';
+import 'package:shopper/model/src/products/price.dart';
+import 'package:shopper/model/src/products/variant.dart';
+
+import 'discounts.dart';
 
 class OrderLineItem {
   final String id;

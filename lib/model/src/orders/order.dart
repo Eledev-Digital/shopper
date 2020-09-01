@@ -1,6 +1,7 @@
-import 'package:shopper/model/orders/order_line_item.dart';
-import 'package:shopper/model/products/price.dart';
-import 'package:shopper/model/user/address.dart';
+import 'package:shopper/model/src/products/price.dart';
+import 'package:shopper/model/src/user/address.dart';
+
+import 'order_line_item.dart';
 
 class Order {
   final String id;

@@ -1,5 +1,5 @@
-import 'package:shopper/model/checkout/line_item.dart';
-import 'package:shopper/model/products/price.dart';
+import 'package:shopper/model/src/checkout/line_item.dart';
+import 'package:shopper/model/src/products/price.dart';
 
 class LastIncompleteCheckout {
   final String completedAt;

@@ -1,5 +1,4 @@
-import 'package:shopper/model/products/image.dart';
-
+import 'image.dart';
 import 'price.dart';
 
 class Variant {

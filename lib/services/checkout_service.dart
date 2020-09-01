@@ -10,8 +10,7 @@ import 'package:shopper/graphql/mutations/replace_checkout_items.dart';
 import 'package:shopper/graphql/mutations/update_checkout_address.dart';
 import 'package:shopper/graphql/queries/get_orders.dart';
 import 'package:shopper/mixins/shopper_error.dart';
-import 'package:shopper/model/orders/order.dart';
-import 'package:shopper/model/orders/orders.dart';
+import 'package:shopper/model/models.dart';
 
 import '../shopper_config.dart';
 

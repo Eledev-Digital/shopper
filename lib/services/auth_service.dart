@@ -4,7 +4,7 @@ import 'package:shopper/graphql/mutations/create_customer.dart';
 import 'package:shopper/graphql/mutations/create_customer_access_token.dart';
 import 'package:shopper/graphql/queries/get_customer.dart';
 import 'package:shopper/mixins/shopper_error.dart';
-import 'package:shopper/model/user/user.dart';
+import 'package:shopper/model/models.dart';
 import 'package:shopper/shopper.dart';
 
 class AuthService with ShopperError {

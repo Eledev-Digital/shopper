@@ -1,4 +1,4 @@
-import 'package:shopper/model/products/price.dart';
+import 'package:shopper/model/src/products/price.dart';
 
 class AppliedGiftCards {
   final Price amountUsed;

@@ -3,8 +3,7 @@ import 'package:shopper/enums/product_sort_key.dart';
 import 'package:shopper/graphql/queries/getProducts.dart';
 import 'package:shopper/graphql/queries/getProductsAfterCursor.dart';
 import 'package:shopper/mixins/shopper_error.dart';
-import 'package:shopper/model/products/product.dart';
-import 'package:shopper/model/products/products.dart';
+import 'package:shopper/model/models.dart';
 
 import '../shopper_config.dart';
 
