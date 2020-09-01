@@ -1,4 +1,4 @@
-import 'package:shopper/model/checkout/line_items.dart';
+import 'package:shopper/model/checkout/line_item.dart';
 import 'package:shopper/model/products/price.dart';
 
 class LastIncompleteCheckout {
