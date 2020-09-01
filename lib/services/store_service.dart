@@ -1,5 +1,5 @@
 import 'package:graphql/client.dart';
-import 'package:shopper/enums/sort_key_product.dart';
+import 'package:shopper/enums/product_sort_key.dart';
 import 'package:shopper/graphql/queries/getProducts.dart';
 import 'package:shopper/graphql/queries/getProductsAfterCursor.dart';
 import 'package:shopper/mixins/shopper_error.dart';
