@@ -7,10 +7,10 @@ import 'package:shopper/model/models.dart';
 
 import '../shopper_config.dart';
 
-class StoreService with ShopperError {
-  StoreService._();
+class ShopperStore with ShopperError {
+  ShopperStore._();
 
-  static final StoreService instance = StoreService._();
+  static final ShopperStore instance = ShopperStore._();
 
   GraphQLClient _client = ShopperConfig.graphQLClient;
 

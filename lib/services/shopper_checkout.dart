@@ -14,9 +14,9 @@ import 'package:shopper/model/models.dart';
 
 import '../shopper_config.dart';
 
-class CheckoutService with ShopperError {
-  CheckoutService._();
-  static final CheckoutService instance = CheckoutService._();
+class ShopperCheckout with ShopperError {
+  ShopperCheckout._();
+  static final ShopperCheckout instance = ShopperCheckout._();
 
   GraphQLClient _client = ShopperConfig.graphQLClient;
 

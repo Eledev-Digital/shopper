@@ -7,11 +7,11 @@ import 'package:shopper/mixins/shopper_error.dart';
 import 'package:shopper/model/models.dart';
 import 'package:shopper/shopper.dart';
 
-class AuthService with ShopperError {
-  AuthService._();
+class ShopperAuth with ShopperError {
+  ShopperAuth._();
   final GraphQLClient _client = ShopperConfig.graphQLClient;
 
-  static final AuthService instance = AuthService._();
+  static final ShopperAuth instance = ShopperAuth._();
 
   Future<User> createUser({
     @required String email,

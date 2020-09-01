@@ -8,10 +8,10 @@ import 'package:shopper/mixins/shopper_error.dart';
 
 import '../shopper_config.dart';
 
-class ShopifyCustomer with ShopperError {
-  ShopifyCustomer._();
+class ShopperCustomer with ShopperError {
+  ShopperCustomer._();
 
-  static final ShopifyCustomer instance = ShopifyCustomer._();
+  static final ShopperCustomer instance = ShopperCustomer._();
   GraphQLClient _client = ShopperConfig.graphQLClient;
 
   Future<void> updateCustomerAdress({

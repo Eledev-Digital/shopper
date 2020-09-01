@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopper/services/store_service.dart';
+import 'package:shopper/shopper.dart';
 import 'package:shopper/shopper_config.dart';
 
 void main() async {
@@ -9,7 +9,7 @@ void main() async {
     storefrontAccessToken: '',
   );
 
-  StoreService store = StoreService.instance;
+  ShopperStore store = ShopperStore.instance;
   final products = await store.getProducts(limit: 10);
 
   print(products[0].title);
