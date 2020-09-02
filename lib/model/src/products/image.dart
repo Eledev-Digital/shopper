@@ -8,6 +8,6 @@ class ShopifyImage {
   factory ShopifyImage.fromJson(Map<String, dynamic> data) => ShopifyImage(
         id: data['id'],
         altText: data['altText'],
-        originalSource: data['originalSource'],
+        originalSource: data['originalSrc'],
       );
 }
