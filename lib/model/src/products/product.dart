@@ -19,7 +19,7 @@ class Product {
   final String onlineStoreUrl;
   final String handle;
   final String productType;
-  final List<Option> option;
+  final List<Option> options;
   final List<ShopifyImage> images;
   final List<Variant> productVariants;
 
@@ -36,7 +36,7 @@ class Product {
     this.onlineStoreUrl,
     this.handle,
     this.productType,
-    this.option,
+    this.options,
     this.images,
     this.productVariants,
   });
@@ -72,7 +72,7 @@ class Product {
       onlineStoreUrl: node['onlineStoreUrl'],
       handle: node['handle'],
       productType: node['productType'],
-      option: _options,
+      options: _options,
       images: _images,
       productVariants: _variants,
     );
