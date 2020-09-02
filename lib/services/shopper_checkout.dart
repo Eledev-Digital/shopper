@@ -8,7 +8,10 @@ import 'package:shopper/graphql/mutations/create_checkout.dart';
 import 'package:shopper/graphql/mutations/remove_discount_code.dart';
 import 'package:shopper/graphql/mutations/replace_checkout_items.dart';
 import 'package:shopper/graphql/mutations/update_checkout_address.dart';
+import 'package:shopper/graphql/queries/checkout_info.dart';
+import 'package:shopper/graphql/queries/checkout_info_no_shipping.dart';
 import 'package:shopper/graphql/queries/get_orders.dart';
+import 'package:shopper/graphql/queries/shipping_info.dart';
 import 'package:shopper/mixins/shopper_error.dart';
 import 'package:shopper/model/models.dart';
 
@@ -193,5 +196,35 @@ class ShopperCheckout with ShopperError {
     checkForError(result);
 
     if (clearCache) _client.cache.write(_options.toKey(), null);
+  }
+
+  /// Returns a [Checkout] object.
+  ///
+  /// Returns the Checkout object of the checkout with the [checkoutId].
+  Future<Checkout> getCheckoutInfoQuery({
+    String checkoutId,
+    bool clearCache = false,
+  }) async {
+    final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
+      documentNode: gql(shippingInfoQuery),
+      variables: {'id': checkoutId},
+    );
+    QueryResult result = await _client.query(_optionsRequireShipping);
+
+    bool _requiresShipping = (result?.data['node'] ?? {})['requiresShipping'];
+
+    final WatchQueryOptions _options = WatchQueryOptions(
+      documentNode: gql(
+        _requiresShipping ? checkoutInfoQuery : checkoutInfoNoShippingQuery,
+      ),
+      variables: {'id': checkoutId},
+    );
+    final QueryResult _result = await _client.query(_options);
+
+    checkForError(_result);
+
+    if (clearCache) _client.cache.write(_options.toKey(), null);
+
+    return Checkout.fromJson(_result?.data['node'] ?? {});
   }
 }
