@@ -17,7 +17,6 @@ class ShopperStore with ShopperError {
   Future<List<Product>> getProducts({
     String query = '',
     int limit = 100,
-    bool reverse = false,
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
   }) async {
@@ -43,7 +42,6 @@ class ShopperStore with ShopperError {
     String query = '',
     int limit = 100,
     String cursor = '',
-    bool reverse = false,
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
   }) async {
