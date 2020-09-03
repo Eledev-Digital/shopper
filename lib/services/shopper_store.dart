@@ -1,5 +1,5 @@
 import 'package:graphql/client.dart';
-import 'package:shopper/enums/product_sort_key.dart';
+import 'package:shopper/enums/product_sort.dart';
 import 'package:shopper/graphql/queries/getProducts.dart';
 import 'package:shopper/graphql/queries/getProductsAfterCursor.dart';
 import 'package:shopper/mixins/shopper_error.dart';
@@ -18,15 +18,15 @@ class ShopperStore with ShopperError {
     String query = '',
     int limit = 100,
     bool reverse = false,
-    ProductSortKey sortKey = ProductSortKey.RELEVANCE,
+    ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
   }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getProductsQuery),
       variables: {
         'limit': limit,
-        'sortKey': sortKey.string,
-        'reverse': reverse,
+        'sortKey': sortKey.key,
+        'reverse': sortKey.reversed,
       },
     );
     final QueryResult result = await _client.query(_options);
@@ -44,15 +44,15 @@ class ShopperStore with ShopperError {
     int limit = 100,
     String cursor = '',
     bool reverse = false,
-    ProductSortKey sortKey = ProductSortKey.RELEVANCE,
+    ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
   }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getProductsAfterCursorQuery),
       variables: {
         'limit': limit,
-        'sortKey': sortKey.string,
-        'reverse': reverse,
+        'sortKey': sortKey.key,
+        'reverse': sortKey.reversed,
         'cursor': cursor,
       },
     );
