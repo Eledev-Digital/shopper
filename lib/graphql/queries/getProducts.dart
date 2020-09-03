@@ -22,9 +22,15 @@ query($limit : Int, $sortKey : ProductSortKeys, $reverse: Boolean, $query: Strin
                 id
                 originalSrc
               }
+              
               priceV2 {
                 amount
                 currencyCode
+              }
+              
+              selectedOptions {
+                name
+                value
               }
               compareAtPriceV2 {
                 amount
