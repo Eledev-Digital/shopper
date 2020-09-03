@@ -22,7 +22,7 @@ query($limit : Int, $sortKey : ProductSortKeys, $reverse: Boolean, $query: Strin
                 id
                 originalSrc
               }
-              
+
               priceV2 {
                 amount
                 currencyCode
@@ -35,6 +35,9 @@ query($limit : Int, $sortKey : ProductSortKeys, $reverse: Boolean, $query: Strin
               compareAtPriceV2 {
                 amount
                 currencyCode
+              }
+              product {
+                title
               }
               weight
               weightUnit

@@ -14,12 +14,14 @@ class Variant {
   final bool availableForSale;
   final List<SelectedOption> selectedOptions;
   final double weight;
+  final String productName;
   final String weightUnit;
 
   Variant({
     this.id,
     this.sku,
     this.title,
+    this.productName,
     this.image,
     this.price,
     this.compareAtPrice,
@@ -47,6 +49,7 @@ class Variant {
       availableForSale: data['availableForSale'],
       weight: data['weight'],
       weightUnit: data['weightUnit'],
+      productName: (data['product'] ?? {})['title'],
     );
   }
 }
