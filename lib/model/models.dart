@@ -11,6 +11,7 @@ export 'src/products/option.dart';
 export 'src/products/price.dart';
 export 'src/products/product.dart';
 export 'src/products/image.dart';
+export 'src/products/selected_option.dart';
 
 /// orders models
 export 'src/orders/orders.dart';
