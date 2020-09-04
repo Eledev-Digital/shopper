@@ -26,6 +26,7 @@ class ShopperStore with ShopperError {
         'limit': limit,
         'sortKey': sortKey.key,
         'reverse': sortKey.reversed,
+        'query': query,
       },
     );
     final QueryResult result = await _client.query(_options);
@@ -51,6 +52,7 @@ class ShopperStore with ShopperError {
         'limit': limit,
         'sortKey': sortKey.key,
         'reverse': sortKey.reversed,
+        'query': query,
         'cursor': cursor,
       },
     );
