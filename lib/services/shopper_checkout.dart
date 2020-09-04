@@ -211,7 +211,9 @@ class ShopperCheckout with ShopperError {
     );
     QueryResult result = await _client.query(_optionsRequireShipping);
 
-    bool _requiresShipping = (result?.data['node'] ?? {})['requiresShipping'];
+    var data = result?.data ?? {};
+
+    bool _requiresShipping = (data['node'] ?? {})['requiresShipping'];
 
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(
@@ -225,6 +227,8 @@ class ShopperCheckout with ShopperError {
 
     if (clearCache) _client.cache.write(_options.toKey(), null);
 
-    return Checkout.fromJson(_result?.data['node'] ?? {});
+    var _data = _result?.data ?? {};
+
+    return Checkout.fromJson(_data['node'] ?? {});
   }
 }
