@@ -16,10 +16,16 @@ class ShopperStore with ShopperError {
 
   Future<List<Product>> getProducts({
     String query = '',
+    String cursor = '',
     int limit = 100,
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
+    bool filterOutOfStock = true,
   }) async {
+    var outOfStockFilter =
+        '(published_status:published AND available_for_sale:true)';
+    query = filterOutOfStock ? outOfStockFilter + query : query;
+
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getProductsQuery),
       variables: {
@@ -27,6 +33,7 @@ class ShopperStore with ShopperError {
         'sortKey': sortKey.key,
         'reverse': sortKey.reversed,
         'query': query,
+        'cursor': cursor,
       },
     );
     final QueryResult result = await _client.query(_options);
@@ -45,7 +52,11 @@ class ShopperStore with ShopperError {
     String cursor = '',
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
+    bool filterOutOfStock = true,
   }) async {
+    var outOfStockFilter =
+        '(published_status:published AND available_for_sale:true)';
+    query = filterOutOfStock ? outOfStockFilter + query : query;
     final WatchQueryOptions _options = WatchQueryOptions(
       documentNode: gql(getProductsAfterCursorQuery),
       variables: {
