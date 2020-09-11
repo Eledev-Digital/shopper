@@ -3,6 +3,7 @@ query($limit : Int, $sortKey : ProductSortKeys, $reverse: Boolean, $query: Strin
   products(first: $limit, sortKey: $sortKey, reverse: $reverse, query: $query) {
     pageInfo {
       hasNextPage
+      hasPreviousPage
     }
     edges {
       cursor
