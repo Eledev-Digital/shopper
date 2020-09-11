@@ -12,7 +12,7 @@ void main() async {
   ShopperStore store = ShopperStore.instance;
   final products = await store.getProducts(limit: 10);
 
-  print(products[0].title);
+  print(products.products[0].title);
   runApp(MyApp());
 }
 
