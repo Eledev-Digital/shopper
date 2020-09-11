@@ -11,7 +11,9 @@ class Products {
     List<Product> _products = (data['edges'] as List)
         ?.map((product) => Product.fromJson(product))
         ?.toList();
+
     var pageInfo = data['pageInfo'] ?? {};
+
     return Products(
       products: _products,
       hasNextPage: pageInfo['hasNextPage'],

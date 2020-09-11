@@ -2,6 +2,7 @@ const String getProductsAfterCursorQuery = r'''
 query( $after: String, $limit : Int, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean){
   products(query: $query, first: $limit, after: $after, sortKey: $sortKey, reverse: $reverse) {
     edges {
+       cursor
       node {
       options(first: 50) {
             id
@@ -56,7 +57,6 @@ query( $after: String, $limit : Int, $sortKey : ProductSortKeys, $query: String,
           }
         }
       }
-      cursor
     }
     pageInfo {
       hasNextPage
