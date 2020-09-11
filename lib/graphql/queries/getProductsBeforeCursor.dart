@@ -1,6 +1,6 @@
-const String getProductsAfterCursorQuery = r'''
-query( $after: String, $limit : Int, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean){
-  products(query: $query, first: $limit, after: $after, sortKey: $sortKey, reverse: $reverse) {
+const String getProductsBeforeCursorQuery = r'''
+query( $before: String, $limit : Int, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean){
+  products(query: $query, first: $limit, before: $before, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
       options(first: 50) {

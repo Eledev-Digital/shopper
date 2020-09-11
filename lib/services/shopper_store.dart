@@ -2,6 +2,7 @@ import 'package:graphql/client.dart';
 import 'package:shopper/enums/product_sort.dart';
 import 'package:shopper/graphql/queries/getProducts.dart';
 import 'package:shopper/graphql/queries/getProductsAfterCursor.dart';
+import 'package:shopper/graphql/queries/getProductsBeforeCursor.dart';
 import 'package:shopper/mixins/shopper_error.dart';
 import 'package:shopper/model/models.dart';
 
@@ -14,9 +15,8 @@ class ShopperStore with ShopperError {
 
   GraphQLClient _client = ShopperConfig.graphQLClient;
 
-  Future<List<Product>> getProducts({
+  Future<Products> getProducts({
     String query = '',
-    String cursor = '',
     int limit = 100,
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
@@ -33,7 +33,6 @@ class ShopperStore with ShopperError {
         'sortKey': sortKey.key,
         'reverse': sortKey.reversed,
         'query': query,
-        'cursor': cursor,
       },
     );
     final QueryResult result = await _client.query(_options);
@@ -43,13 +42,13 @@ class ShopperStore with ShopperError {
 
     var data = result?.data ?? {};
 
-    return Products.fromJson(data["products"] ?? {}).products;
+    return Products.fromJson(data["products"] ?? {});
   }
 
-  Future<List<Product>> getProductsAfterCursor({
+  Future<Products> getProductsAfterCursor({
     String query = '',
     int limit = 100,
-    String cursor = '',
+    String after = '',
     ProductSort sortKey = ProductSort.FEATURED,
     bool clearCache = false,
     bool filterOutOfStock = true,
@@ -64,7 +63,7 @@ class ShopperStore with ShopperError {
         'sortKey': sortKey.key,
         'reverse': sortKey.reversed,
         'query': query,
-        'cursor': cursor,
+        'after': after,
       },
     );
     final QueryResult result = await _client.query(_options);
@@ -74,6 +73,37 @@ class ShopperStore with ShopperError {
 
     var data = result?.data ?? {};
 
-    return Products.fromJson(data["products"] ?? {}).products;
+    return Products.fromJson(data["products"] ?? {});
+  }
+
+  Future<Products> getProductsBeforeCursor({
+    String query = '',
+    int limit = 100,
+    String before = '',
+    ProductSort sortKey = ProductSort.FEATURED,
+    bool clearCache = false,
+    bool filterOutOfStock = true,
+  }) async {
+    var outOfStockFilter =
+        '(published_status:published AND available_for_sale:true)';
+    query = filterOutOfStock ? outOfStockFilter + query : query;
+    final WatchQueryOptions _options = WatchQueryOptions(
+      documentNode: gql(getProductsBeforeCursorQuery),
+      variables: {
+        'limit': limit,
+        'sortKey': sortKey.key,
+        'reverse': sortKey.reversed,
+        'query': query,
+        'before': before,
+      },
+    );
+    final QueryResult result = await _client.query(_options);
+    checkForError(result);
+
+    if (clearCache) _client.cache.write(_options.toKey(), null);
+
+    var data = result?.data ?? {};
+
+    return Products.fromJson(data["products"] ?? {});
   }
 }
