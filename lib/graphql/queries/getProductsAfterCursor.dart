@@ -43,6 +43,11 @@ query( $after: String, $limit : Int, $sortKey : ProductSortKeys, $query: String,
                 amount
                 currencyCode
               }
+
+              selectedOptions {
+                name
+                value
+              }
               compareAtPriceV2 {
                 amount
                 currencyCode
