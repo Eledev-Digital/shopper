@@ -43,6 +43,9 @@ query( $before: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
                 amount
                 currencyCode
               }
+               product {
+                title
+              }
               selectedOptions {
                 name
                 value
