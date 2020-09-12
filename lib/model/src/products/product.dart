@@ -61,7 +61,7 @@ class Product {
 
     return Product(
       id: node['id'],
-      cursor: data['cursor'],
+      cursor: (data ?? {})['cursor'],
       title: node['title'],
       tags: _tags,
       description: node['description'],
