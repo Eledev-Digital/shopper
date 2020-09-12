@@ -38,17 +38,17 @@ class Variant {
         ?.toList();
 
     return Variant(
-      id: data['id'],
-      sku: data['sku'],
-      title: data['title'],
+      id: (data ?? {})['id'],
+      sku: (data ?? {})['sku'],
+      title: (data ?? {})['title'],
       image: ShopifyImage.fromJson(data['image']),
       selectedOptions: _options,
       price: Price.fromJson(data['priceV2'] ?? {}),
       compareAtPrice: Price.fromJson(data['compareAtPriceV2'] ?? {}),
-      requiresShipping: data['requiresShipping'],
-      availableForSale: data['availableForSale'],
-      weight: data['weight'],
-      weightUnit: data['weightUnit'],
+      requiresShipping: (data ?? {})['requiresShipping'],
+      availableForSale: (data ?? {})['availableForSale'],
+      weight: (data ?? {})['weight'],
+      weightUnit: (data ?? {})['weightUnit'],
       productName: (data['product'] ?? {})['title'],
     );
   }
